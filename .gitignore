@@ -1,0 +1,14 @@
+# Build outputs
+build/
+*.o
+*.elf
+*.hex
+*.map
+
+# clangd / LSP cache
+.cache/
+compile_commands.json
+
+# Editor temp files
+*.swp
+*.tmp
