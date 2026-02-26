@@ -1,4 +1,17 @@
 # ============================================================
+# 🖥️ HOST TEST SETTINGS
+# ============================================================
+
+PYTHON = python3
+TOOLS_DIR = tools
+INPUT_FILE = tools/input.txt
+OUTPUT_FILE = tools/output.txt
+
+UART0_PORT = /dev/ttyUSB0
+UART1_PORT = /dev/ttyUSB1
+TEST_BAUD = 9600
+
+# ============================================================
 # 🔥 UART-CLI Makefile - Arduino Mega 2560 (GCC 5.4 Compatible)
 # ============================================================
 
@@ -198,7 +211,23 @@ help:
 	@echo "  make help         - Show this help"
 
 # ============================================================
+# 🧪 UART INTEGRATION TEST
+# ============================================================
+
+test:
+	@echo ""
+	@echo "🧪 Running UART integration test..."
+	@$(PYTHON) $(TOOLS_DIR)/uart_bridge.py \
+		--uart0 $(UART0_PORT) \
+		--uart1 $(UART1_PORT) \
+		--baud $(TEST_BAUD) \
+		--input $(INPUT_FILE) \
+		--output $(OUTPUT_FILE)
+	@echo ""
+	@echo "✅ Test complete!"
+
+# ============================================================
 # 📋 PHONY TARGETS
 # ============================================================
 
-.PHONY: all flash clean rebuild size size-detailed map disasm includes sources help
+.PHONY: all flash clean rebuild size size-detailed map disasm includes sources help test

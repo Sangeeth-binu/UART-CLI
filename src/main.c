@@ -32,9 +32,9 @@ int main(void) {
     buffer = uart2.rx_char(&uart2);
 
     /* S4 */
-    uart1.tx_str(&uart1, "RECIEVED: ");
+    // uart1.tx_str(&uart1, "RECIEVED: ");
     uart1.tx_char(&uart1, buffer);
-    uart1.tx_str(&uart1, "\r\n");
+    // uart1.tx_str(&uart1, "\r\n");
   }
 
   return 0;
